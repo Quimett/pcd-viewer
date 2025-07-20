@@ -12,8 +12,9 @@ a **uniform occupancy grid** and an **adaptive octree**.
 
 ```
 pcd-viewer/
+├── data/
+│   └── viewer.py            # Main script with interactive menu
 ├── src/
-│   ├── viewer.py            # Main script with interactive menu
 │   ├── ciencias000.pcd      # Sample data files
 │   ├── museo000.pcd
 │   └── ...
@@ -40,7 +41,7 @@ pip install numpy pyvista
 Run the program from the root of the project with:
 
 ```bash
-python src/viewer.py
+python data/viewer.py
 ```
 
 You'll see an interactive menu with two options:

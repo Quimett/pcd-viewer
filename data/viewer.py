@@ -218,7 +218,7 @@ def visualizar_archivo(ruta):
     pl.show()
 
 def seleccionar_archivo_unico():
-    archivos = [f for f in os.listdir('.') if f.lower().endswith('.pcd')]
+    archivos = [f for f in os.listdir('src') if f.lower().endswith('.pcd')]
     for i, f in enumerate(archivos, 1):
         print(f"  {i}) {f}")
     opcion = input(f"Selecciona un archivo [1-{len(archivos)}]: ")
