@@ -239,7 +239,7 @@ if __name__ == '__main__':
     print()
     if modo == '1':
         print("-> Modo Comparar Datos")
-        archivos = [f for f in os.listdir('.') if f.lower().endswith('.pcd')]
+        archivos = [f for f in os.listdir('src') if f.lower().endswith('.pcd')]
         for idx, fn in enumerate(archivos, 1):
             print(f"  {idx}) {fn}")
         print("  0) Todos los archivos")
@@ -256,12 +256,26 @@ if __name__ == '__main__':
                 print("Opción inválida. Saliendo.")
                 sys.exit(1)
         for f in seleccionados:
+            ruta = os.path.join('src', f)
             print()
-            formatear_comparacion(f, comparar_archivo(f))
+            formatear_comparacion(f, comparar_archivo(ruta))
+
     elif modo == '2':
         print("-> Modo Visualización 3D")
-        f = seleccionar_archivo_unico()
-        print()
-        visualizar_archivo(f)
+        archivos = [f for f in os.listdir('src') if f.lower().endswith('.pcd')]
+        for i, f in enumerate(archivos, 1):
+            print(f"  {i}) {f}")
+        opcion = input(f"Selecciona un archivo [1-{len(archivos)}]: ")
+        try:
+            idx = int(opcion) - 1
+            if 0 <= idx < len(archivos):
+                ruta = os.path.join('src', archivos[idx])
+                print()
+                visualizar_archivo(ruta)
+            else:
+                raise ValueError
+        except ValueError:
+            print("Opción inválida.")
+            sys.exit(1)
     else:
         print("Opción inválida. Saliendo.")
